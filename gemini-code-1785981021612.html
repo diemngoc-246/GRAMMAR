@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global English Mastery: Grade 7 Semester I Review Suite</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --accent-blue: #38bdf8;
+            --accent-green: #4ade80;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --accent-purple: #c084fc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #475569;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Header & Analytics Bar */
+        header {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-title h1 {
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .header-stats {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: var(--bg-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .user-input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-input-group input {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .btn {
+            background: var(--accent-blue);
+            color: #0f172a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-success { background: var(--accent-green); color: #0f172a; }
+        .btn-amber { background: var(--accent-amber); color: #0f172a; }
+        .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+        .btn-outline:hover { background: var(--bg-card); }
+
+        /* Navigation Tabs */
+        nav.nav-tabs {
+            background: var(--bg-secondary);
+            display: flex;
+            padding: 0 2rem;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        /* Main Container */
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .module-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .module-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            color: var(--accent-blue);
+        }
+
+        /* Module 1: Vocabulary Matcher */
+        .matcher-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .matcher-grid { grid-template-columns: 1fr; }
+        }
+
+        .match-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .match-item {
+            background: var(--bg-card);
+            border: 2px dashed var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .match-item:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .match-item.selected {
+            border-color: var(--accent-amber);
+            background: rgba(251, 191, 36, 0.15);
+        }
+
+        .match-item.matched {
+            border-color: var(--accent-green);
+            background: rgba(74, 222, 128, 0.15);
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Module 2: Grammar Transformer */
+        .grammar-task {
+            background: var(--bg-card);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .grammar-prompt {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .grammar-hint {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .grammar-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .grammar-input-group input {
+            flex: 1;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .feedback-text {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feedback-text.correct { color: var(--accent-green); }
+        .feedback-text.incorrect { color: var(--accent-rose); }
+
+        /* Module 3: Reading Comprehension */
+        .reading-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .reading-layout { grid-template-columns: 1fr; }
+        }
+
+        .reading-passage {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .vocab-term {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-blue);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom: 2px solid var(--accent-blue);
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .vocab-term:hover {
+            background: var(--accent-blue);
+            color: #0f172a;
+        }
+
+        .side-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            position: sticky;
+            top: 5.5rem;
+            height: fit-content;
+        }
+
+        .side-panel h3 {
+            color: var(--accent-amber);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .dict-pos {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: rgba(192, 132, 252, 0.2);
+            color: var(--accent-purple);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .dict-meaning {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .dict-example {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-left: 2px solid var(--accent-amber);
+            padding-left: 0.5rem;
+        }
+
+        /* Module 4: Pronunciation & Stress */
+        .quiz-option {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .quiz-option.selected-correct {
+            background: rgba(74, 222, 128, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        .quiz-option.selected-wrong {
+            background: rgba(244, 63, 94, 0.2);
+            border-color: var(--accent-rose);
+        }
+
+        /* Certificate Styling */
+        .certificate-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        #cert-svg {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Dashboard Overview Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dash-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dash-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .dash-icon {
+            font-size: 2rem;
+        }
+
+        .progress-bar-bg {
+            background: var(--bg-primary);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            background: var(--accent-blue);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Dashboard Bar -->
+    <header>
+        <div class="brand-title">
+            <h1>Global English Mastery</h1>
+            <span class="brand-badge">Grade 7 Sem I</span>
+        </div>
+
+        <div class="header-stats">
+            <div class="user-input-group">
+                <span class="stat-label">Student:</span>
+                <input type="text" id="studentNameInput" value="Alex Morgan" onchange="updateStudentName(this.value)">
+            </div>
+
+            <div class="stat-box">
+                <span class="stat-label">⏳ Timer:</span>
+                <span class="stat-value" id="timerDisplay">30:00</span>
+            </div>
+
+            <div class="stat-box">
+                <span class="stat-label">🏆 Total Score:</span>
+                <span class="stat-value" id="globalScoreDisplay">0 / 250</span>
+            </div>
+
+            <div class="stat-box">
+                <span class="stat-label">⭐ High Score:</span>
+                <span class="stat-value" id="highScoreDisplay">0</span>
+            </div>
+
+            <button class="btn btn-amber" onclick="downloadExamSuite()">📦 Download Suite (.html)</button>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('overview')">📊 Overview</button>
+        <button class="tab-btn" onclick="switchTab('mod1')">🧩 Mod 1: Vocab Matcher</button>
+        <button class="tab-btn" onclick="switchTab('mod2')">✍️ Mod 2: Grammar Transformer</button>
+        <button class="tab-btn" onclick="switchTab('mod3')">📖 Mod 3: Interactive Reading</button>
+        <button class="tab-btn" onclick="switchTab('mod4')">🔊 Mod 4: Phonetics & Stress</button>
+        <button class="tab-btn" onclick="switchTab('cert')">🎓 Certificate</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- SECTION 0: OVERVIEW DASHBOARD -->
+        <section id="overview" class="module-section active">
+            <div class="card">
+                <h2>Welcome to Grade 7 Semester I Final Assessment</h2>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">
+                    Complete all 4 interactive modules based on the Friends Plus Grade 7 curriculum to unlock your official Certificate of Completion.
+                </p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Module 1 Stat Card -->
+                <div class="dash-card">
+                    <div>
+                        <div class="dash-card-header">
+                            <h3>Module 1: Vocabulary</h3>
+                            <span class="dash-icon">🧩</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Match synonyms and meanings from Units 1-6.</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span>Progress</span>
+                            <span id="m1-progress-text">0/5 matched</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="m1-progress-bar"></div></div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;" onclick="switchTab('mod1')">Start Module 1</button>
+                    </div>
+                </div>
+
+                <!-- Module 2 Stat Card -->
+                <div class="dash-card">
+                    <div>
+                        <div class="dash-card-header">
+                            <h3>Module 2: Grammar</h3>
+                            <span class="dash-icon">✍️</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Sentence transformations, tenses, & gerunds.</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span>Progress</span>
+                            <span id="m2-progress-text">0/5 solved</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="m2-progress-bar"></div></div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;" onclick="switchTab('mod2')">Start Module 2</button>
+                    </div>
+                </div>
+
+                <!-- Module 3 Stat Card -->
+                <div class="dash-card">
+                    <div>
+                        <div class="dash-card-header">
+                            <h3>Module 3: Reading</h3>
+                            <span class="dash-icon">📖</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Passage exploration with live Vietnamese translation dictionary panel.</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span>Progress</span>
+                            <span id="m3-progress-text">0/5 answered</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="m3-progress-bar"></div></div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;" onclick="switchTab('mod3')">Start Module 3</button>
+                    </div>
+                </div>
+
+                <!-- Module 4 Stat Card -->
+                <div class="dash-card">
+                    <div>
+                        <div class="dash-card-header">
+                            <h3>Module 4: Phonetics</h3>
+                            <span class="dash-icon">🔊</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">10 primary stress & pronunciation challenges.</p>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span>Progress</span>
+                            <span id="m4-progress-text">0/10 completed</span>
+                        </div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" id="m4-progress-bar"></div></div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;" onclick="switchTab('mod4')">Start Module 4</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: VOCABULARY MATCHER -->
+        <section id="mod1" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Module 1: Vocabulary Matcher (Units 1 - 6)</h2>
+                    <span style="font-size: 0.9rem; color: var(--accent-amber);">Click a Term on the left, then click its corresponding Match on the right.</span>
+                </div>
+                <div class="matcher-grid">
+                    <div class="match-column" id="termsColumn">
+                        <!-- Terms generated by JS -->
+                    </div>
+                    <div class="match-column" id="defsColumn">
+                        <!-- Definitions generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GRAMMAR TRANSFORMER -->
+        <section id="mod2" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Module 2: Sentence Transformation Lab</h2>
+                    <span style="font-size: 0.9rem; color: var(--accent-amber);">Type the complete rewritten sentence into the box and click Verify.</span>
+                </div>
+                <div id="grammarTasksContainer">
+                    <!-- Tasks generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: INTERACTIVE READING -->
+        <section id="mod3" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Module 3: Reading Comprehension & Interactive Dictionary</h2>
+                    <span style="font-size: 0.9rem; color: var(--accent-amber);">Click any highlighted term to reveal its Vietnamese translation and context.</span>
+                </div>
+                
+                <div class="reading-layout">
+                    <div class="reading-passage">
+                        <h3>Transportation and Music in Eco-Cities of Tomorrow</h3>
+                        <br>
+                        <p>
+                            In the 21st century, modern cities are striving to become cleaner and more sustainable. Many urban areas now encourage citizens to use 
+                            <span class="vocab-term" data-word="Renewable" data-pos="adjective" data-meaning="Tái tạo (năng lượng vô tận không bị cạn kiệt)" data-example="Solar and wind energy are renewable sources.">renewable</span> 
+                            energy sources like solar panels and wind turbines. In terms of public transit, traditional buses are being replaced by 
+                            <span class="vocab-term" data-word="Amphibious" data-pos="adjective" data-meaning="Lưỡng cư (có thể hoạt động cả trên đất liền lẫn dưới nước)" data-example="Amphibious vehicles run fast on land and float easily on rivers.">amphibious</span> 
+                            vehicles that travel on both roads and rivers smoothly.
+                        </p>
+                        <br>
+                        <p>
+                            Traveling without planning can be 
+                            <span class="vocab-term" data-word="Risky" data-pos="adjective" data-meaning="Mạo hiểm, đầy rủi ro" data-example="It is risky to travel without a proper map.">risky</span>, 
+                            so smart transport applications help commuters avoid traffic jams. Furthermore, citizens are encouraged to 
+                            <span class="vocab-term" data-word="Compost" data-pos="verb/noun" data-meaning="Ủ phân hữu cơ (tái chế rác thải thực phẩm)" data-example="People compost their food waste instead of throwing it away.">compost</span> 
+                            organic waste to preserve the environment.
+                        </p>
+                        <br>
+                        <p>
+                            Cultural life is also thriving. Annual music festivals showcase artists with immense 
+                            <span class="vocab-term" data-word="Compassion" data-pos="noun" data-meaning="Lòng trắc ẩn, sự đồng cảm sâu sắc" data-example="He wrote the melody to express compassion for disaster victims.">compassion</span> 
+                            who perform to raise funds for poor children. Choosing an 
+                            <span class="vocab-term" data-word="Economical" data-pos="adjective" data-meaning="Tiết kiệm, hợp lý về kinh tế" data-example="Electric bikes are more economical than gas motorcycles.">economical</span> 
+                            way to travel to these concerts allows students to enjoy music while protecting their budget.
+                        </p>
+
+                        <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                            <h4 style="margin-bottom: 1rem; color: var(--accent-blue);">Comprehension Questions:</h4>
+                            <div id="readingQuizContainer">
+                                <!-- Quiz generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Side Panel -->
+                    <div class="side-panel" id="dictSidePanel">
+                        <h3>📖 Smart Dictionary</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;" id="dictPlaceholder">Click any highlighted word in the passage to inspect its definition, part of speech, and Vietnamese meaning.</p>
+                        <div id="dictContent" style="display: none;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h2 id="dictWord" style="color: var(--accent-blue);">Word</h2>
+                                <span class="dict-pos" id="dictPos">pos</span>
+                            </div>
+                            <div class="dict-meaning" id="dictMeaning">Vietnamese translation here</div>
+                            <div class="dict-example" id="dictExample">Example sentence...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PRONUNCIATION & STRESS -->
+        <section id="mod4" class="module-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Module 4: Pronunciation & Stress Pattern Mastery</h2>
+                    <span style="font-size: 0.9rem; color: var(--accent-amber);">Select the word with a different stress pattern or underlined sound.</span>
+                </div>
+                <div id="phoneticsQuizContainer">
+                    <!-- 10 Phonetic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CERTIFICATE OF COMPLETION -->
+        <section id="cert" class="module-section">
+            <div class="card certificate-container">
+                <div style="margin-bottom: 1.5rem; text-align: center;">
+                    <h2 style="color: var(--accent-amber); font-size: 1.8rem;">Official Achievement Certificate</h2>
+                    <p style="color: var(--text-muted);">Dynamically generated based on your real-time score and completion stats.</p>
+                </div>
+
+                <!-- SVG Certificate -->
+                <svg id="cert-svg" viewBox="0 0 800 550" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="800" height="550" fill="#1e293b" rx="15"/>
+                    <rect x="20" y="20" width="760" height="510" fill="none" stroke="#fbbf24" stroke-width="4" rx="10" stroke-dasharray="10 5"/>
+                    <rect x="30" y="30" width="740" height="490" fill="none" stroke="#38bdf8" stroke-width="1.5" rx="8"/>
+
+                    <!-- Corner Ornaments -->
+                    <circle cx="40" cy="40" r="10" fill="#fbbf24" opacity="0.5"/>
+                    <circle cx="760" cy="40" r="10" fill="#fbbf24" opacity="0.5"/>
+                    <circle cx="40" cy="510" r="10" fill="#fbbf24" opacity="0.5"/>
+                    <circle cx="760" cy="510" r="10" fill="#fbbf24" opacity="0.5"/>
+
+                    <!-- Certificate Header -->
+                    <text x="400" y="90" text-anchor="middle" fill="#fbbf24" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="bold" letter-spacing="2">CERTIFICATE OF ACHIEVEMENT</text>
+                    <text x="400" y="125" text-anchor="middle" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="14">GLOBAL ENGLISH MASTERY • GRADE 7 SEMESTER I</text>
+
+                    <line x1="200" y1="145" x2="600" y2="145" stroke="#475569" stroke-width="1"/>
+
+                    <!-- Body Text -->
+                    <text x="400" y="195" text-anchor="middle" fill="#f8fafc" font-family="'Segoe UI', sans-serif" font-size="16">This is proudly presented to</text>
+                    
+                    <!-- Student Name -->
+                    <text id="certStudentName" x="400" y="250" text-anchor="middle" fill="#38bdf8" font-family="'Segoe UI', sans-serif" font-size="36" font-weight="bold">Alex Morgan</text>
+
+                    <text x="400" y="300" text-anchor="middle" fill="#f8fafc" font-family="'Segoe UI', sans-serif" font-size="15">for successfully completing the English 7 Friends Plus Review Suite</text>
+
+                    <!-- Score Badge SVG -->
+                    <g transform="translate(300, 330)">
+                        <rect width="200" height="60" fill="#0f172a" rx="8" stroke="#4ade80" stroke-width="1.5"/>
+                        <text x="100" y="25" text-anchor="middle" fill="#94a3b8" font-size="12">FINAL ASSESSMENT SCORE</text>
+                        <text id="certScoreText" x="100" y="48" text-anchor="middle" fill="#4ade80" font-size="20" font-weight="bold">0 / 250 (0%)</text>
+                    </g>
+
+                    <!-- Signatures & Date -->
+                    <line x1="150" y1="460" x2="300" y2="460" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="225" y="480" text-anchor="middle" fill="#94a3b8" font-size="12">Date Issued</text>
+                    <text id="certDate" x="225" y="450" text-anchor="middle" fill="#f8fafc" font-size="14">2026-08-06</text>
+
+                    <line x1="500" y1="460" x2="650" y2="460" stroke="#94a3b8" stroke-width="1"/>
+                    <text x="575" y="480" text-anchor="middle" fill="#94a3b8" font-size="12">Academic Director</text>
+                    <text x="575" y="450" text-anchor="middle" fill="#f8fafc" font-family="'Brush Script MT', cursive, sans-serif" font-size="22">Friends Plus Suite</text>
+                </svg>
+
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <button class="btn btn-success" onclick="window.print()">🖨️ Print Certificate</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        /* ==========================================================================
+           GLOBAL APP STATE
+           ========================================================================== */
+        const state = {
+            studentName: "Alex Morgan",
+            timerSeconds: 1800, // 30 minutes
+            timerInterval: null,
+            highScore: 0,
+            scores: {
+                mod1: 0, // Max 50 (5 pairs * 10)
+                mod2: 0, // Max 50 (5 tasks * 10)
+                mod3: 0, // Max 50 (5 Qs * 10)
+                mod4: 0  // Max 100 (10 Qs * 10)
+            },
+            mod1State: { selectedTerm: null, matchedCount: 0 },
+            mod2State: { completed: [false, false, false, false, false] },
+            mod3State: { answered: [false, false, false, false, false] },
+            mod4State: { answered: Array(10).fill(false) }
+        };
+
+        /* ==========================================================================
+           DATA SETS
+           ========================================================================== */
+        const mod1Data = [
+            { id: 1, term: "Renewable Energy", match: "Năng lượng tái tạo (mặt trời, gió)" },
+            { id: 2, term: "Amphibious Bus", match: "Xe buýt lưỡng cư (chạy đất & nước)" },
+            { id: 3, term: "Compassion", match: "Lòng trắc ẩn, sự đồng cảm" },
+            { id: 4, term: "Economical", match: "Tiết kiệm, hợp lý về chi phí" },
+            { id: 5, term: "Compost Waste", match: "Ủ phân hữu cơ từ rác thực phẩm" }
+        ];
+
+        const mod2Data = [
+            {
+                id: 1,
+                prompt: "Henry is really into playing the drum when he has free time.",
+                hint: "Rewrite using 'fond of': Henry is...",
+                answers: [
+                    "henry is fond of playing the drum when he has free time",
+                    "henry is fond of playing the drum when he has free time."
+                ]
+            },
+            {
+                id: 2,
+                prompt: "We plan to install solar panels on the roof of our house.",
+                hint: "Rewrite using 'are going to': We...",
+                answers: [
+                    "we are going to install solar panels on the roof of our house",
+                    "we are going to install solar panels on the roof of our house."
+                ]
+            },
+            {
+                id: 3,
+                prompt: "Although my homework was difficult, I finished it before going to bed.",
+                hint: "Rewrite using 'however': My homework was difficult...",
+                answers: [
+                    "my homework was difficult; however, i finished it before going to bed",
+                    "my homework was difficult. however, i finished it before going to bed",
+                    "my homework was difficult, however i finished it before going to bed."
+                ]
+            },
+            {
+                id: 4,
+                prompt: "Passengers spend forty-five minutes flying to Washington DC.",
+                hint: "Rewrite using 'It takes...': It takes...",
+                answers: [
+                    "it takes passengers forty-five minutes to fly to washington dc",
+                    "it takes passengers 45 minutes to fly to washington dc."
+                ]
+            },
+            {
+                id: 5,
+                prompt: "I'm taking an umbrella because it's raining outside.",
+                hint: "Rewrite using 'so': It's raining outside...",
+                answers: [
+                    "it's raining outside, so i'm taking an umbrella",
+                    "it is raining outside, so i'm taking an umbrella."
+                ]
+            }
+        ];
+
+        const mod3QuizData = [
+            {
+                q: "1. What is special about amphibious vehicles?",
+                options: ["They only fly in the sky", "They travel on both land and water", "They run without any energy", "They are made of solar panels"],
+                correct: 1
+            },
+            {
+                q: "2. Why do people compost organic food waste?",
+                options: ["To sell it to tourists", "To preserve the environment", "To create traffic jams", "To make musical instruments"],
+                correct: 1
+            },
+            {
+                q: "3. What is the main purpose of annual music festivals mentioned?",
+                options: ["To test new electric bikes", "To perform and raise funds for poor children", "To build new roads", "To clean the rivers"],
+                correct: 1
+            },
+            {
+                q: "4. Which adjective is used to describe traveling without a map?",
+                options: ["Economical", "Renewable", "Risky", "Amphibious"],
+                correct: 2
+            },
+            {
+                q: "5. What is solar energy an example of?",
+                options: ["A non-renewable source", "A dangerous chemical", "A renewable energy source", "A type of bus"],
+                correct: 2
+            }
+        ];
+
+        const mod4Data = [
+            {
+                q: "1. Which word has a different stress pattern from the others?",
+                options: ["A. guitar", "B. review", "C. ticket", "D. perform"],
+                correct: 2,
+                explain: "'ticket' has stress on the 1st syllable ('tick-et), while the others are stressed on the 2nd syllable."
+            },
+            {
+                q: "2. Which word has a different stress pattern from the others?",
+                options: ["A. positive", "B. determine", "C. suitable", "D. motion"],
+                correct: 1,
+                explain: "'determine' is stressed on the 2nd syllable (de-'ter-mine), while others are on the 1st syllable."
+            },
+            {
+                q: "3. Which word has a different stress pattern from the others?",
+                options: ["A. material", "B. operate", "C. convention", "D. include"],
+                correct: 1,
+                explain: "'operate' is stressed on the 1st syllable ('op-er-ate), while others are on the 2nd syllable."
+            },
+            {
+                q: "4. Which word has a different stress pattern from the others?",
+                options: ["A. renewable", "B. amphibious", "C. environment", "D. information"],
+                correct: 3,
+                explain: "'information' has primary stress on the 3rd syllable (in-for-'ma-tion), others on the 2nd syllable."
+            },
+            {
+                q: "5. Which word has a different stress pattern from the others?",
+                options: ["A. intelligent", "B. biology", "C. environment", "D. international"],
+                correct: 3,
+                explain: "'international' is stressed on the 4th syllable (in-ter-na-'tion-al), others on the 2nd syllable."
+            },
+            {
+                q: "6. Which word has the underlined part pronounced differently?",
+                options: ["A. bass", "B. amazing", "C. stay", "D. watch"],
+                correct: 3,
+                explain: "'watch' is pronounced with /ɒ/, whereas 'bass', 'amazing', and 'stay' use the sound /eɪ/."
+            },
+            {
+                q: "7. Which word has the underlined part pronounced differently?",
+                options: ["A. future", "B. music", "C. drum", "D. tune"],
+                correct: 2,
+                explain: "'drum' is pronounced with /ʌ/, while 'future', 'music', and 'tune' use /juː/."
+            },
+            {
+                q: "8. Which word has the underlined part pronounced differently?",
+                options: ["A. reply", "B. deny", "C. apply", "D. energy"],
+                correct: 3,
+                explain: "'energy' ends with the /i/ sound, whereas 'reply', 'deny', and 'apply' end with /aɪ/."
+            },
+            {
+                q: "9. Which word has a different stress pattern from the others?",
+                options: ["A. transit", "B. keyboard", "C. catchy", "D. event"],
+                correct: 3,
+                explain: "'event' is stressed on the 2nd syllable (e-'vent), others are on the 1st syllable."
+            },
+            {
+                q: "10. Which word has a different stress pattern from the others?",
+                options: ["A. fusion", "B. review", "C. rhythm", "D. turbine"],
+                correct: 1,
+                explain: "'review' is stressed on the 2nd syllable (re-'view), others are on the 1st syllable."
+            }
+        ];
+
+        /* ==========================================================================
+           INITIALIZATION & LOCALSTORAGE
+           ========================================================================== */
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLocalStorage();
+            initTimer();
+            renderMod1();
+            renderMod2();
+            renderMod3();
+            renderMod4();
+            setupReadingPassageEvents();
+            updateGlobalScore();
+        });
+
+        function loadLocalStorage() {
+            const savedName = localStorage.getItem('gem_student_name');
+            if (savedName) {
+                state.studentName = savedName;
+                document.getElementById('studentNameInput').value = savedName;
+            }
+            const savedHigh = localStorage.getItem('gem_high_score');
+            if (savedHigh) {
+                state.highScore = parseInt(savedHigh, 10);
+                document.getElementById('highScoreDisplay').innerText = state.highScore;
+            }
+        }
+
+        function updateStudentName(newName) {
+            state.studentName = newName.trim() || "Student";
+            localStorage.setItem('gem_student_name', state.studentName);
+            updateCertificate();
+        }
+
+        /* ==========================================================================
+           TIMER LOGIC
+           ========================================================================== */
+        function initTimer() {
+            state.timerInterval = setInterval(() => {
+                if (state.timerSeconds > 0) {
+                    state.timerSeconds--;
+                    const mins = Math.floor(state.timerSeconds / 60);
+                    const secs = state.timerSeconds % 60;
+                    document.getElementById('timerDisplay').innerText = 
+                        `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                } else {
+                    clearInterval(state.timerInterval);
+                    alert("⏰ Time is up! Review your final score and certificate.");
+                }
+            }, 1000);
+        }
+
+        /* ==========================================================================
+           TAB SWITCHING LOGIC
+           ========================================================================== */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.module-section').forEach(sec => sec.classList.remove('active'));
+
+            const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+            if (targetBtn) targetBtn.classList.add('active');
+
+            const targetSec = document.getElementById(tabId);
+            if (targetSec) targetSec.classList.add('active');
+
+            if (tabId === 'cert') updateCertificate();
+        }
+
+        /* ==========================================================================
+           MODULE 1: VOCABULARY MATCHER
+           ========================================================================== */
+        function renderMod1() {
+            const termsCol = document.getElementById('termsColumn');
+            const defsCol = document.getElementById('defsColumn');
+
+            // Shuffle defs
+            const shuffledDefs = [...mod1Data].sort(() => Math.random() - 0.5);
+
+            termsCol.innerHTML = mod1Data.map(item => `
+                <div class="match-item" id="term-${item.id}" onclick="selectMod1Term(${item.id})">
+                    <span>${item.term}</span>
+                    <span id="term-status-${item.id}">⚪</span>
+                </div>
+            `).join('');
+
+            defsCol.innerHTML = shuffledDefs.map(item => `
+                <div class="match-item" id="def-${item.id}" onclick="selectMod1Def(${item.id})">
+                    <span>${item.match}</span>
+                    <span id="def-status-${item.id}">⚪</span>
+                </div>
+            `).join('');
+        }
+
+        function selectMod1Term(id) {
+            if (document.getElementById(`term-${id}`).classList.contains('matched')) return;
+            document.querySelectorAll('#termsColumn .match-item').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`term-${id}`).classList.add('selected');
+            state.mod1State.selectedTerm = id;
+            checkMod1Pair();
+        }
+
+        function selectMod1Def(id) {
+            if (document.getElementById(`def-${id}`).classList.contains('matched')) return;
+            document.querySelectorAll('#defsColumn .match-item').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`def-${id}`).classList.add('selected');
+            state.mod1State.selectedDef = id;
+            checkMod1Pair();
+        }
+
+        function checkMod1Pair() {
+            const { selectedTerm, selectedDef } = state.mod1State;
+            if (selectedTerm && selectedDef) {
+                if (selectedTerm === selectedDef) {
+                    // Match found!
+                    document.getElementById(`term-${selectedTerm}`).classList.remove('selected');
+                    document.getElementById(`def-${selectedDef}`).classList.remove('selected');
+                    document.getElementById(`term-${selectedTerm}`).classList.add('matched');
+                    document.getElementById(`def-${selectedDef}`).classList.add('matched');
+                    
+                    document.getElementById(`term-status-${selectedTerm}`).innerText = "✅";
+                    document.getElementById(`def-status-${selectedDef}`).innerText = "✅";
+
+                    state.mod1State.matchedCount++;
+                    state.scores.mod1 += 10;
+                    
+                    document.getElementById('m1-progress-text').innerText = `${state.mod1State.matchedCount}/5 matched`;
+                    document.getElementById('m1-progress-bar').style.width = `${(state.mod1State.matchedCount / 5) * 100}%`;
+                    updateGlobalScore();
+                } else {
+                    // Wrong pair
+                    setTimeout(() => {
+                        document.querySelectorAll('.match-item.selected').forEach(el => el.classList.remove('selected'));
+                    }, 400);
+                }
+                state.mod1State.selectedTerm = null;
+                state.mod1State.selectedDef = null;
+            }
+        }
+
+        /* ==========================================================================
+           MODULE 2: GRAMMAR TRANSFORMER
+           ========================================================================== */
+        function renderMod2() {
+            const container = document.getElementById('grammarTasksContainer');
+            container.innerHTML = mod2Data.map((task, index) => `
+                <div class="grammar-task">
+                    <div class="grammar-prompt">${index + 1}. ${task.prompt}</div>
+                    <div class="grammar-hint">${task.hint}</div>
+                    <div class="grammar-input-group">
+                        <input type="text" id="g-input-${index}" placeholder="Type sentence here..." />
+                        <button class="btn" onclick="verifyGrammarTask(${index})">Verify</button>
+                    </div>
+                    <div class="feedback-text" id="g-feedback-${index}"></div>
+                </div>
+            `).join('');
+        }
+
+        function verifyGrammarTask(index) {
+            if (state.mod2State.completed[index]) return;
+
+            const inputVal = document.getElementById(`g-input-${index}`).value.trim().toLowerCase();
+            const feedbackEl = document.getElementById(`g-feedback-${index}`);
+            const task = mod2Data[index];
+
+            const isCorrect = task.answers.some(ans => ans.toLowerCase() === inputVal);
+
+            if (isCorrect) {
+                feedbackEl.className = "feedback-text correct";
+                feedbackEl.innerText = "✨ Correct sentence structure!";
+                state.mod2State.completed[index] = true;
+                state.scores.mod2 += 10;
+                document.getElementById(`g-input-${index}`).disabled = true;
+
+                const count = state.mod2State.completed.filter(Boolean).length;
+                document.getElementById('m2-progress-text').innerText = `${count}/5 solved`;
+                document.getElementById('m2-progress-bar').style.width = `${(count / 5) * 100}%`;
+                updateGlobalScore();
+            } else {
+                feedbackEl.className = "feedback-text incorrect";
+                feedbackEl.innerText = "❌ Incorrect. Keep trying or check word order!";
+            }
+        }
+
+        /* ==========================================================================
+           MODULE 3: READING & SMART DICTIONARY
+           ========================================================================== */
+        function setupReadingPassageEvents() {
+            document.querySelectorAll('.vocab-term').forEach(term => {
+                term.addEventListener('click', (e) => {
+                    const word = e.target.getAttribute('data-word');
+                    const pos = e.target.getAttribute('data-pos');
+                    const meaning = e.target.getAttribute('data-meaning');
+                    const example = e.target.getAttribute('data-example');
+
+                    document.getElementById('dictPlaceholder').style.display = 'none';
+                    document.getElementById('dictContent').style.display = 'block';
+
+                    document.getElementById('dictWord').innerText = word;
+                    document.getElementById('dictPos').innerText = pos;
+                    document.getElementById('dictMeaning').innerText = meaning;
+                    document.getElementById('dictExample').innerText = `"${example}"`;
+                });
+            });
+        }
+
+        function renderMod3() {
+            const container = document.getElementById('readingQuizContainer');
+            container.innerHTML = mod3QuizData.map((q, qIndex) => `
+                <div style="margin-bottom: 1.25rem;">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">${q.q}</div>
+                    ${q.options.map((opt, optIndex) => `
+                        <div class="quiz-option" id="m3-opt-${qIndex}-${optIndex}" onclick="answerMod3(${qIndex}, ${optIndex})">
+                            <span>${opt}</span>
+                            <span id="m3-icon-${qIndex}-${optIndex}"></span>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        function answerMod3(qIndex, optIndex) {
+            if (state.mod3State.answered[qIndex]) return;
+
+            state.mod3State.answered[qIndex] = true;
+            const qData = mod3QuizData[qIndex];
+            const isCorrect = (optIndex === qData.correct);
+
+            const selectedEl = document.getElementById(`m3-opt-${qIndex}-${optIndex}`);
+            if (isCorrect) {
+                selectedEl.classList.add('selected-correct');
+                document.getElementById(`m3-icon-${qIndex}-${optIndex}`).innerText = "✅";
+                state.scores.mod3 += 10;
+            } else {
+                selectedEl.classList.add('selected-wrong');
+                document.getElementById(`m3-icon-${qIndex}-${optIndex}`).innerText = "❌";
+                // highlight correct answer
+                document.getElementById(`m3-opt-${qIndex}-${qData.correct}`).classList.add('selected-correct');
+            }
+
+            const count = state.mod3State.answered.filter(Boolean).length;
+            document.getElementById('m3-progress-text').innerText = `${count}/5 answered`;
+            document.getElementById('m3-progress-bar').style.width = `${(count / 5) * 100}%`;
+            updateGlobalScore();
+        }
+
+        /* ==========================================================================
+           MODULE 4: PRONUNCIATION & STRESS
+           ========================================================================== */
+        function renderMod4() {
+            const container = document.getElementById('phoneticsQuizContainer');
+            container.innerHTML = mod4Data.map((q, qIndex) => `
+                <div class="grammar-task" style="border-left-color: var(--accent-purple);">
+                    <div class="grammar-prompt">${q.q}</div>
+                    <div style="margin-top: 0.75rem;">
+                        ${q.options.map((opt, optIndex) => `
+                            <div class="quiz-option" id="m4-opt-${qIndex}-${optIndex}" onclick="answerMod4(${qIndex}, ${optIndex})">
+                                <span>${opt}</span>
+                                <span id="m4-icon-${qIndex}-${optIndex}"></span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="grammar-hint" id="m4-explain-${qIndex}" style="display: none; margin-top: 0.5rem; color: var(--accent-amber);">
+                        💡 Explanation: ${q.explain}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function answerMod4(qIndex, optIndex) {
+            if (state.mod4State.answered[qIndex]) return;
+
+            state.mod4State.answered[qIndex] = true;
+            const qData = mod4Data[qIndex];
+            const isCorrect = (optIndex === qData.correct);
+
+            const selectedEl = document.getElementById(`m4-opt-${qIndex}-${optIndex}`);
+            document.getElementById(`m4-explain-${qIndex}`).style.display = 'block';
+
+            if (isCorrect) {
+                selectedEl.classList.add('selected-correct');
+                document.getElementById(`m4-icon-${qIndex}-${optIndex}`).innerText = "✅";
+                state.scores.mod4 += 10;
+            } else {
+                selectedEl.classList.add('selected-wrong');
+                document.getElementById(`m4-icon-${qIndex}-${optIndex}`).innerText = "❌";
+                document.getElementById(`m4-opt-${qIndex}-${qData.correct}`).classList.add('selected-correct');
+            }
+
+            const count = state.mod4State.answered.filter(Boolean).length;
+            document.getElementById('m4-progress-text').innerText = `${count}/10 completed`;
+            document.getElementById('m4-progress-bar').style.width = `${(count / 10) * 100}%`;
+            updateGlobalScore();
+        }
+
+        /* ==========================================================================
+           SCORE & CERTIFICATE UPDATES
+           ========================================================================== */
+        function updateGlobalScore() {
+            const total = state.scores.mod1 + state.scores.mod2 + state.scores.mod3 + state.scores.mod4;
+            document.getElementById('globalScoreDisplay').innerText = `${total} / 250`;
+
+            if (total > state.highScore) {
+                state.highScore = total;
+                localStorage.setItem('gem_high_score', total);
+                document.getElementById('highScoreDisplay').innerText = total;
+            }
+
+            updateCertificate();
+        }
+
+        function updateCertificate() {
+            const total = state.scores.mod1 + state.scores.mod2 + state.scores.mod3 + state.scores.mod4;
+            const percentage = Math.round((total / 250) * 100);
+
+            document.getElementById('certStudentName').textContent = state.studentName || "Alex Morgan";
+            document.getElementById('certScoreText').textContent = `${total} / 250 (${percentage}%)`;
+
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('certDate').textContent = today;
+        }
+
+        /* ==========================================================================
+           MANDATORY OFFLINE DOWNLOAD FEATURE
+           Exports the entire standalone HTML web app to Grade7_English_FinalReview.html
+           ========================================================================== */
+        function downloadExamSuite() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Grade7_English_FinalReview.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
